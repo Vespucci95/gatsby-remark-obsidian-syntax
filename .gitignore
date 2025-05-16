@@ -4,6 +4,5 @@ node_modules/
 public/
 coverage/
 .DS_Store
-index.js
 yarn-error.log
 npm-debug.log
