@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+.cache/
+public/
+coverage/
+.DS_Store
+index.js
+yarn-error.log
+npm-debug.log

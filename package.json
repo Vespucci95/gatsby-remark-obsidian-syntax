@@ -1,0 +1,29 @@
+{
+  "name": "gatsby-remark-obsidian-syntax",
+  "version": "0.0.1",
+  "description": "Your plugin description",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir . --ignore **/__tests__",
+    "prepare": "cross-env NODE_ENV=production npm run build",
+    "test": "jest"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "remark",
+    "obsidian"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "gatsby": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0"
+  }
+}
