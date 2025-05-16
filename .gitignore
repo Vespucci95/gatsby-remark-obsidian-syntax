@@ -3,6 +3,7 @@ node_modules/
 .cache/
 public/
 coverage/
+dist/
 .DS_Store
 yarn-error.log
 npm-debug.log
