@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-obsidian-syntax",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Your plugin description",
   "main": "index.js",
   "scripts": {
