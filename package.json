@@ -28,6 +28,7 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-typescript": "^7.27.1",
     "@types/jest": "^29.5.14",
+    "@types/mdast": "^4.0.4",
     "@types/node": "^22.15.18",
     "cross-env": "^7.0.3",
     "gatsby": "^5.14.3",
