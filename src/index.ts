@@ -14,18 +14,19 @@ interface RemarkPluginArgs {
   };
 }
 
-interface ObsidianSyntaxPluginOptions {
-  className?: string;
+export interface ObsidianSyntaxPluginOptions {
+  toHashTagUrl: (hashTag: string) => string;
+  toPageUrl: (page: string) => string;
 }
 
-const convertPhrasingContent = (node: Paragraph) => {
-  node.children = node.children.map(convertToObsidianSyntax)
+const convertPhrasingContent = (node: Paragraph, options: ObsidianSyntaxPluginOptions) => {
+  node.children = node.children.map(phrasingContent => convertToObsidianSyntax(phrasingContent, options))
 }
 
 export default function remarkObsidianSyntax(
   { markdownAST, reporter }: RemarkPluginArgs,
   pluginOptions: ObsidianSyntaxPluginOptions
 ) {
-  visit(markdownAST, 'paragraph', convertPhrasingContent);
+  visit(markdownAST, 'paragraph', node => convertPhrasingContent(node, pluginOptions));
   return markdownAST;
 }
