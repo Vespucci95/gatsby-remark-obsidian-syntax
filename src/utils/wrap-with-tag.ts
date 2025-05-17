@@ -9,7 +9,7 @@ import _ from 'lodash';
 
 export function wrapWithTag(
   tagName: any,
-  children: string,
+  children: string | null,
   props?: any
 ): string {
   // 유효 속성 필터링
@@ -31,12 +31,21 @@ export function wrapWithTag(
   // 속성 문자열 결합
   const attrStr = _.compact(attrEntries).join(' ');
 
-  // 태그 생성
-  const template = _.template('<${tagName}${attrStr}>${children}</${tagName}>');
+  if (children) {
+    // 태그 생성
+    const template = _.template('<${tagName}${attrStr}>${children}</${tagName}>');
+
+    return template({
+      tagName,
+      attrStr: attrStr ? ' ' + attrStr : '',
+      children
+    });
+  }
+
+  const template = _.template('<${tagName}${attrStr} />');
 
   return template({
     tagName,
-    attrStr: attrStr ? ' ' + attrStr : '',
-    children
+    attrStr: attrStr ? ' ' + attrStr : ''
   });
 }

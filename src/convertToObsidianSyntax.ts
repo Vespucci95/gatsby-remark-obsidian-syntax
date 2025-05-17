@@ -6,12 +6,14 @@ export const OBSIDIAN_CLASSNAME: Record<string, string> = {
   HIGHLIGHT: 'obsidian-highlight',
   TAG: 'obsidian-tag',
   LINK_PAGE: 'obsidian-link-page',
+  IMAGE: 'obsidian-image'
 } as const;
 
 export const OBSIDIAN_REGEX: Record<string, RegExp> = {
   HIGHLIGHT: /==(.*?)==/g,
   TAG: /(#[\w가-힣]+(-[\w가-힣]+)*)/g,
   LINK_PAGE: /(?<!!)\[\[(.*?)\]\]/g,
+  IMAGE: /!\[\[(.*?)\]\]/g
 } as const;
 
 type ConvertObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions) => string;
@@ -34,6 +36,14 @@ export const convertLinkPage: ConvertObsidianSyntax = (text, { toPageUrl }) => {
   }));
 };
 
+export const convertImage: ConvertObsidianSyntax = (text, { toImageUrl }) => {
+  return text.replace(OBSIDIAN_REGEX.IMAGE, wrapWithTag('img', null, {
+    class: OBSIDIAN_CLASSNAME.IMAGE,
+    src: toImageUrl('$1'),
+    placeholder: '$1'
+  }));
+};
+
 const hasObsidianSyntax = (text: string): boolean => {
   return Object.values(OBSIDIAN_REGEX)
     .map(regex => regex.test(text))
@@ -43,7 +53,8 @@ const hasObsidianSyntax = (text: string): boolean => {
 const extendObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions): string => [
   convertHashTag,
   convertHighlightText,
-  convertLinkPage
+  convertLinkPage,
+  convertImage
 ].reduce((a, f) => f(a, options), text);
 
 const convertToObsidianSyntax = (phrasingContent: PhrasingContent, options: ObsidianSyntaxPluginOptions): PhrasingContent => {
@@ -55,6 +66,8 @@ const convertToObsidianSyntax = (phrasingContent: PhrasingContent, options: Obsi
   if (!hasObsidianSyntax(value)) {
     return phrasingContent;
   }
+
+  console.log(phrasingContent)
 
   return {
     type: 'html',

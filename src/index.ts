@@ -17,6 +17,7 @@ interface RemarkPluginArgs {
 export interface ObsidianSyntaxPluginOptions {
   toHashTagUrl: (hashTag: string) => string;
   toPageUrl: (page: string) => string;
+  toImageUrl: (filename: string) => string;
 }
 
 const convertPhrasingContent = (node: Paragraph, options: ObsidianSyntaxPluginOptions) => {
