@@ -26,7 +26,9 @@ export const convertHashTag: ConvertObsidianSyntax = (text, { toHashTagUrl }) =>
 };
 
 export const convertHighlightText: ConvertObsidianSyntax = (text, options) => {
-  return text.replace(OBSIDIAN_REGEX.HIGHLIGHT, wrapWithTag('span', '$1', { class: OBSIDIAN_CLASSNAME.HIGHLIGHT }));
+  return text.replace(OBSIDIAN_REGEX.HIGHLIGHT, wrapWithTag('span', '$1', {
+    class: OBSIDIAN_CLASSNAME.HIGHLIGHT
+  }));
 };
 
 export const convertLinkPage: ConvertObsidianSyntax = (text, { toPageUrl }) => {
@@ -66,8 +68,6 @@ const convertToObsidianSyntax = (phrasingContent: PhrasingContent, options: Obsi
   if (!hasObsidianSyntax(value)) {
     return phrasingContent;
   }
-
-  console.log(phrasingContent)
 
   return {
     type: 'html',
