@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.3...v0.0.4) (2025-05-18)
+
+
+### Bug Fixes
+
+* unist-util-visit notfound ([1967f64](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/1967f64c9a90843e8c3e5c6cb92ac040e423aeb7))
+
 ### [0.0.3](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.2...v0.0.3) (2025-05-18)
 
 
