@@ -1,8 +1,9 @@
 import { visit } from 'unist-util-visit';
-import { Paragraph, Root } from 'mdast'
+import { Root } from 'mdast'
 import convertToObsidianSyntax from './convertToObsidianSyntax';
+import { ObsidianSyntaxPluginOptions } from './constants';
 
-interface RemarkPluginArgs {
+export interface RemarkPluginArgs {
   markdownAST: Root;
   markdownNode: {
     fileAbsolutePath?: string;
@@ -14,20 +15,12 @@ interface RemarkPluginArgs {
   };
 }
 
-export interface ObsidianSyntaxPluginOptions {
-  toHashTagUrl: (hashTag: string) => string;
-  toPageUrl: (page: string) => string;
-  toImageUrl: (filename: string) => string;
-}
-
-const convertPhrasingContent = (node: Paragraph, options: ObsidianSyntaxPluginOptions) => {
-  node.children = node.children.map(phrasingContent => convertToObsidianSyntax(phrasingContent, options))
-}
-
 export default function remarkObsidianSyntax(
   { markdownAST, reporter }: RemarkPluginArgs,
   pluginOptions: ObsidianSyntaxPluginOptions
 ) {
-  visit(markdownAST, 'paragraph', node => convertPhrasingContent(node, pluginOptions));
+  visit(markdownAST, 'paragraph', node => {
+    node.children = node.children.map(phrasingContent => convertToObsidianSyntax(phrasingContent, pluginOptions))
+  });
   return markdownAST;
 }
