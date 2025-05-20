@@ -9,7 +9,7 @@ import _ from 'lodash';
 
 export function wrapWithTag(
   tagName: any,
-  children: string | null,
+  children: string | null | undefined,
   props?: any
 ): string {
   // 유효 속성 필터링

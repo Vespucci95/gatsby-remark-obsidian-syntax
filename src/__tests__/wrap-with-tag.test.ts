@@ -3,14 +3,18 @@ import { wrapWithTag } from '../utils/wrap-with-tag';
 
 describe('utils/dom: wrapWithTag', () => {
   context('wrapWithTag 태그 래핑 테스트', () => {
-    it('div 태그가 올바르게 래핑되는지 확인', () => {
+    it('div 태그로 변환', () => {
       expect(wrapWithTag('div', 'test')).toBe('<div>test</div>');
     });
-    it('span 태그가 올바르게 래핑되는지 확인', () => {
+    it('span 태그로 변환', () => {
       expect(wrapWithTag('span', 'test')).toBe('<span>test</span>');
     });
-    it('a 태그가 올바르게 래핑되는지 확인', () => {
+    it('a 태그로 변환', () => {
       expect(wrapWithTag('a', 'test')).toBe('<a>test</a>');
+    });
+    it('children 이 null 또는 undefined 인 경우 빈 태그로 변환', () => {
+      expect(wrapWithTag('input', null)).toBe('<input />')
+      expect(wrapWithTag('input', undefined)).toBe('<input />')
     });
   });
 
