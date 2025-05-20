@@ -16,8 +16,8 @@ yarn add gatsby-remark-obsidian-syntax
 
 - **하이라이트**: `==하이라이트==` → <span class="obsidian-highlight">하이라이트</span>
 - **해시태그**: `#태그` → <a class="obsidian-tag" href="/tags/태그">#태그</a>
-- **내부 링크**: `[[페이지]]` → <a class="obsidian-link-page" href="/pages/페이지">페이지</a>
-- **이미지**: `![[이미지.png]]` → <img class="obsidian-image" src="/assets/이미지.png" />
+- **내부 링크**: `[[페이지]]` → <a class="obsidian-internal-link" href="/pages/페이지">페이지</a>
+- **이미지**: `![[이미지.png]]` → <img class="obsidian-image" src="/assets/이미지.png" alt="이미지.png" />
 
 ## 사용법
 
@@ -42,6 +42,14 @@ module.exports = {
               
               // 이미지 경로를 URL로 변환하는 함수
               toImageUrl: (filename) => `/assets/${filename}`,
+              
+              // (선택 사항) 커스텀 CSS 클래스명 지정
+              className: {
+                highlight: 'custom-highlight',     // 기본값: 'obsidian-highlight'
+                tag: 'custom-tag',                 // 기본값: 'obsidian-tag'
+                internalLink: 'custom-page-link',  // 기본값: 'obsidian-internal-link'
+                embedImage: 'custom-image'         // 기본값: 'obsidian-image'
+              }
             },
           },
         ],
@@ -69,7 +77,7 @@ module.exports = {
 }
 
 /* 내부 링크 스타일링 */
-.obsidian-link-page {
+.obsidian-internal-link {
   color: #8b5cf6;
   text-decoration: none;
 }
@@ -85,11 +93,12 @@ module.exports = {
 
 플러그인은 다음과 같은 옵션을 사용합니다.
 
-| 옵션 | 타입 | 설명 |
-|------|------|------|
-| `toHashTagUrl` | 함수 | 해시태그를 URL로 변환하는 함수 |
-| `toPageUrl` | 함수 | 내부 링크를 URL로 변환하는 함수 |
-| `toImageUrl` | 함수 | 이미지 경로를 URL로 변환하는 함수 |
+| 옵션 | 타입 | 필수 | 설명 |
+|------|------|------|------|
+| `toHashTagUrl` | 함수 | 예 | 해시태그를 URL로 변환하는 함수 |
+| `toPageUrl` | 함수 | 예 | 내부 링크를 URL로 변환하는 함수 |
+| `toImageUrl` | 함수 | 예 | 이미지 경로를 URL로 변환하는 함수 |
+| `className` | 객체 | 아니오 | 각 요소에 적용할 CSS 클래스명 (기본값 제공됨) |
 
 ## 예제
 
@@ -116,12 +125,44 @@ module.exports = {
 
 <p><a class="obsidian-tag" href="/tags/개츠비">#개츠비</a> <a class="obsidian-tag" href="/tags/마크다운">#마크다운</a> <a class="obsidian-tag" href="/tags/옵시디언">#옵시디언</a> 태그도 지원합니다.</p>
 
-<p>내부 링크: <a class="obsidian-link-page" href="/pages/관련페이지">관련페이지</a></p>
+<p>내부 링크: <a class="obsidian-internal-link" href="/pages/관련페이지">관련페이지</a></p>
 
-<p>이미지: <img class="obsidian-image" src="/assets/screenshot.png" /></p>
+<p>이미지: <img class="obsidian-image" src="/assets/screenshot.png" alt="screenshot.png" /></p>
 ```
 
-### 기여
+### 커스텀 클래스명 사용 예
+
+```javascript
+// gatsby-config.js
+{
+  resolve: `gatsby-remark-obsidian-syntax`,
+  options: {
+    toHashTagUrl: (hashTag) => `/tags/${hashTag.replace(/^#/, '')}`,
+    toPageUrl: (page) => `/pages/${page}`,
+    toImageUrl: (filename) => `/assets/${filename}`,
+    className: {
+      highlight: 'custom-highlight',
+      tag: 'custom-tag',
+      internalLink: 'custom-page-link',
+      embedImage: 'custom-image'
+    }
+  },
+}
+```
+
+위 설정의 HTML 출력:
+
+```html
+<p><span class="custom-highlight">중요한 내용</span>은 하이라이트로 표시됩니다.</p>
+
+<p><a class="custom-tag" href="/tags/개츠비">#개츠비</a> <a class="custom-tag" href="/tags/마크다운">#마크다운</a></p>
+
+<p>내부 링크: <a class="custom-page-link" href="/pages/관련페이지">관련페이지</a></p>
+
+<p>이미지: <img class="custom-image" src="/assets/screenshot.png" alt="screenshot.png" /></p>
+```
+
+## 기여
 
 이슈와 풀 리퀘스트는 환영합니다! 기여하기 전에 이슈를 먼저 생성해주세요.
 
