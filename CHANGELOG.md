@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.4...v0.0.5) (2025-05-20)
+
+
+### Features
+
+* className pluginOption 추가 ([fffbd4b](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/fffbd4b3a1e65fc7ed7b266617f6058178ce4363))
+
 ### [0.0.4](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.3...v0.0.4) (2025-05-18)
 
 
