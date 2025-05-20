@@ -9,6 +9,10 @@
     "watch": "tsc -w",
     "prepare": "cross-env NODE_ENV=production npm run build",
     "release": "standard-version",
+    "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:dry-run": "standard-version --dry-run",
     "test": "jest",
     "test:watch": "jest --watch"
   },
