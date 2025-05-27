@@ -9,7 +9,7 @@ export interface ObsidianSyntaxPluginOptions {
 
 export const OBSIDIAN_MARKDOWN_REGEX: Record<ObsidianMarkDownSyntax, RegExp> = {
   highlight: /==(.*?)==/g,
-  tag: /(?:^|\s)#([가-힣a-zA-Z0-9_-]+)(?=\s|$)/g,
+  tag: /(?:^|\s)(#(?![0-9]+(?:\s|$))[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9_-]+)/g,
   internalLink: /(?<!!)\[\[(.*?)\]\]/g,
   embedImage: /!\[\[(.*?)\]\]/g,
 } as const;
