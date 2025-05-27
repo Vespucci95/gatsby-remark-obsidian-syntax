@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.6...v0.0.7) (2025-05-27)
+
+
+### Bug Fixes
+
+* tag 정규식 수정 ([e1342cd](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/e1342cd1c5b2f0d942772e7562ccf60bb13e6ff6))
+
 ### [0.0.6](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.5...v0.0.6) (2025-05-27)
 
 ### [0.0.5](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.4...v0.0.5) (2025-05-20)
