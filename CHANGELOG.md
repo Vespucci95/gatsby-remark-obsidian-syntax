@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.8...v0.0.9) (2025-05-27)
+
+
+### Bug Fixes
+
+* toHashTagUrl 인자값 변경 ([a5a1a57](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/a5a1a57cf5a48fe2d4c552ccd3242e23b671e2c0))
+
 ### [0.0.8](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.7...v0.0.8) (2025-05-27)
 
 
