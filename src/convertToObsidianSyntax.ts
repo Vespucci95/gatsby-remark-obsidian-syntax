@@ -10,10 +10,12 @@ export const convertTag: ConvertObsidianSyntax = (text, {
 }) => {
   return text.replace(
     OBSIDIAN_MARKDOWN_REGEX.tag,
-    wrapWithTag('a', '$1', {
-      class: className.tag,
-      href: toHashTagUrl('$1')
-    })
+    (_, captured) => {
+      return wrapWithTag('a', captured, {
+        class: className.tag,
+        href: toHashTagUrl(captured)
+      })
+    }
   );
 };
 
