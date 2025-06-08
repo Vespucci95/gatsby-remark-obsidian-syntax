@@ -3,6 +3,7 @@ import { Blockquote, Root } from 'mdast'
 import convertToObsidianSyntax from './convertToObsidianSyntax';
 import { CALLOUT_REGEX, ObsidianSyntaxPluginOptions } from './constants';
 import _ from 'lodash'
+import { wrapWithTag } from './utils/wrap-with-tag';
 
 export interface RemarkPluginArgs {
   markdownAST: Root;
@@ -47,11 +48,17 @@ export default function remarkObsidianSyntax(
             children: [
               {
                 type: 'html',
-                value: firstChild.value.replace(CALLOUT_REGEX, '$2')
+                value: firstChild.value.replace(
+                  CALLOUT_REGEX,
+                  wrapWithTag('span', '$2', {
+                    class: [className, 'title'].join('-')
+                  })
+                )
               },
               ...rest
             ]
-          }
+          },
+          ...node.children.slice(1)
         ]
       }
     }
