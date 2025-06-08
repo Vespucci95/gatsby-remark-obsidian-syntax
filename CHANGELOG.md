@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.1.0...v0.1.1) (2025-06-08)
+
+
+### Bug Fixes
+
+* **blockquote:** 두번째 문단 안보이던 문제 해결 ([6207248](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/6207248e8c85e2eef2102f2708745bad1b723e41))
+
 ## [0.1.0](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.9...v0.1.0) (2025-06-08)
 
 
