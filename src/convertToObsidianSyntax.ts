@@ -2,7 +2,7 @@ import { PhrasingContent } from 'mdast';
 import { wrapWithTag } from './utils/wrap-with-tag';
 import { DEFAULT_OBSIDIAN_CLASSNAME, OBSIDIAN_MARKDOWN_REGEX, ObsidianSyntaxPluginOptions } from './constants';
 
-type ConvertObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions) => string;
+export type ConvertObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions) => string;
 
 export const convertTag: ConvertObsidianSyntax = (text, {
   toHashTagUrl,
@@ -57,13 +57,13 @@ export const convertEmbedImage: ConvertObsidianSyntax = (text, {
   );
 };
 
-const hasObsidianSyntax = (text: string): boolean => {
+export const hasObsidianSyntax = (text: string): boolean => {
   return Object.values(OBSIDIAN_MARKDOWN_REGEX)
     .map(regex => regex.test(text))
     .some(Boolean);
 };
 
-const extendObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions): string => [
+export const extendObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions): string => [
   convertTag,
   convertHighlightText,
   convertInternalLink,

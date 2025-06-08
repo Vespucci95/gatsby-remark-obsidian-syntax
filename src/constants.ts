@@ -20,3 +20,5 @@ export const DEFAULT_OBSIDIAN_CLASSNAME: Record<ObsidianMarkDownSyntax, string> 
   internalLink: 'obsidian-internal-link',
   embedImage: 'obsidian-image'
 } as const;
+
+export const CALLOUT_REGEX = /^\[!(\w+)\]\s*(.*)/
