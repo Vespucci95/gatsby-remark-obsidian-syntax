@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.9...v0.1.0) (2025-06-08)
+
+
+### Features
+
+* obsidian callout 문법 지원 ([f7b95da](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/f7b95da7e460e7ce875590ce47a09f30882448af))
+
 ### [0.0.9](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.0.8...v0.0.9) (2025-05-27)
 
 
