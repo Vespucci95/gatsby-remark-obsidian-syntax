@@ -1,30 +1,9 @@
 import { visit } from 'unist-util-visit';
-import { Blockquote, Root } from 'mdast'
 import convertToObsidianSyntax from './convertToObsidianSyntax';
 import { CALLOUT_REGEX } from './constants';
 import _ from 'lodash'
 import { wrapWithTag } from './utils/wrap-with-tag';
-import { ObsidianSyntaxPluginOptions } from './type';
-
-export interface RemarkPluginArgs {
-  markdownAST: Root;
-  markdownNode: {
-    fileAbsolutePath?: string;
-  };
-  reporter: {
-    info: (message: string) => void;
-    warn: (message: string) => void;
-    error: (message: string) => void;
-  };
-}
-
-export interface ExtendedBlockquote extends Blockquote {
-  data?: {
-    hProperties?: {
-      className?: string
-    }
-  }
-}
+import { ExtendedBlockquote, ObsidianSyntaxPluginOptions, RemarkPluginArgs } from './type';
 
 export default function remarkObsidianSyntax(
   { markdownAST, reporter }: RemarkPluginArgs,
