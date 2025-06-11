@@ -1,8 +1,7 @@
 import { PhrasingContent } from 'mdast';
 import { wrapWithTag } from './utils/wrap-with-tag';
-import { DEFAULT_OBSIDIAN_CLASSNAME, OBSIDIAN_MARKDOWN_REGEX, ObsidianSyntaxPluginOptions } from './constants';
-
-export type ConvertObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions) => string;
+import { DEFAULT_OBSIDIAN_CLASSNAME, OBSIDIAN_MARKDOWN_REGEX } from './constants';
+import { ConvertObsidianSyntax, ObsidianSyntaxPluginOptions } from './type';
 
 export const convertTag: ConvertObsidianSyntax = (text, {
   toHashTagUrl,

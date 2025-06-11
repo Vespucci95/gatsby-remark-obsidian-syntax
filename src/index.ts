@@ -1,9 +1,10 @@
 import { visit } from 'unist-util-visit';
 import { Blockquote, Root } from 'mdast'
 import convertToObsidianSyntax from './convertToObsidianSyntax';
-import { CALLOUT_REGEX, ObsidianSyntaxPluginOptions } from './constants';
+import { CALLOUT_REGEX } from './constants';
 import _ from 'lodash'
 import { wrapWithTag } from './utils/wrap-with-tag';
+import { ObsidianSyntaxPluginOptions } from './type';
 
 export interface RemarkPluginArgs {
   markdownAST: Root;
