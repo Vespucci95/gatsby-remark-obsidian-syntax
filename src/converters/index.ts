@@ -1,4 +1,4 @@
 export { convertTag } from './tag';
-export { convertHighlightText } from './highlight';
+export { convertHighlight } from './highlight';
 export { convertInternalLink } from './internal-link';
 export { convertEmbedImage } from './embed-image';
