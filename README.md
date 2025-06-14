@@ -14,10 +14,10 @@ yarn add gatsby-remark-obsidian-syntax
 
 이 플러그인은 다음과 같은 Obsidian 문법을 지원합니다:
 
-- **하이라이트**: `==하이라이트==` → <span class="obsidian-highlight">하이라이트</span>
-- **해시태그**: `#태그` → <a class="obsidian-tag" href="/tags/태그">#태그</a>
-- **내부 링크**: `[[페이지]]` → <a class="obsidian-internal-link" href="/pages/페이지">페이지</a>
-- **이미지**: `![[이미지.png]]` → <img class="obsidian-image" src="/assets/이미지.png" alt="이미지.png" />
+- **하이라이트**: `==하이라이트==` → `<span class="obsidian-highlight">하이라이트</span>`
+- **태그**: `#태그` → `<a class="obsidian-tag" href="/tags/태그">#태그</a>`
+- **내부 링크**: `[[페이지]]` → `<a class="obsidian-internal-link" href="/pages/페이지">페이지</a>`
+- **이미지**: `![[이미지.png]]` → `<img class="obsidian-image" src="/assets/이미지.png" alt="이미지.png" />`
 
 ## 사용법
 
@@ -35,13 +35,13 @@ module.exports = {
             resolve: `gatsby-remark-obsidian-syntax`,
             options: {
               // 해시태그를 URL로 변환하는 함수
-              toHashTagUrl: (hashTag) => `/tags/${hashTag.replace(/^#/, '')}`,
+              linkTag: (hashTag) => `/tags/${hashTag.replace(/^#/, '')}`,
               
               // 내부 링크를 URL로 변환하는 함수
-              toPageUrl: (page) => `/pages/${page}`,
+              linkPage: (page) => `/pages/${page}`,
               
               // 이미지 경로를 URL로 변환하는 함수
-              toImageUrl: (filename) => `/assets/${filename}`,
+              linkImage: (filename) => `/assets/${filename}`,
               
               // (선택 사항) 커스텀 CSS 클래스명 지정
               className: {
@@ -61,7 +61,7 @@ module.exports = {
 
 ### CSS 스타일링
 
-플러그인은 다음 클래스를 사용하여 변환된 Obsidian 요소에 스타일을 적용할 수 있습니다:
+플러그인은 다음 클래스를 사용하여 변환된 Obsidian 요소에 스타일을 적용할 수 있습니다.
 
 ```css
 /* 하이라이트 스타일링 */
@@ -93,11 +93,11 @@ module.exports = {
 
 플러그인은 다음과 같은 옵션을 사용합니다.
 
-| 옵션 | 타입 | 필수 | 설명 |
-|------|------|------|------|
-| `toHashTagUrl` | 함수 | 예 | 해시태그를 URL로 변환하는 함수 |
-| `toPageUrl` | 함수 | 예 | 내부 링크를 URL로 변환하는 함수 |
-| `toImageUrl` | 함수 | 예 | 이미지 경로를 URL로 변환하는 함수 |
+| 옵션          | 타입 | 필수 | 설명 |
+|-------------|------|------|------|
+| `linkTag`   | 함수 | 예 | 해시태그를 URL로 변환하는 함수 |
+| `linkPage`  | 함수 | 예 | 내부 링크를 URL로 변환하는 함수 |
+| `linkImage` | 함수 | 예 | 이미지 경로를 URL로 변환하는 함수 |
 | `className` | 객체 | 아니오 | 각 요소에 적용할 CSS 클래스명 (기본값 제공됨) |
 
 ## 예제
@@ -137,16 +137,16 @@ module.exports = {
 {
   resolve: `gatsby-remark-obsidian-syntax`,
   options: {
-    toHashTagUrl: (hashTag) => `/tags/${hashTag.replace(/^#/, '')}`,
-    toPageUrl: (page) => `/pages/${page}`,
-    toImageUrl: (filename) => `/assets/${filename}`,
+    linkTag: (hashTag) => `/tags/${hashTag.replace(/^#/, '')}`,
+    linkPage: (page) => `/pages/${page}`,
+    linkImage: (filename) => `/assets/${filename}`,
     className: {
       highlight: 'custom-highlight',
       tag: 'custom-tag',
       internalLink: 'custom-page-link',
       embedImage: 'custom-image'
     }
-  },
+  }
 }
 ```
 
@@ -155,7 +155,7 @@ module.exports = {
 ```html
 <p><span class="custom-highlight">중요한 내용</span>은 하이라이트로 표시됩니다.</p>
 
-<p><a class="custom-tag" href="/tags/개츠비">#개츠비</a> <a class="custom-tag" href="/tags/마크다운">#마크다운</a></p>
+<p><a class="custom-tag" href="/tags/gatsby">gatsby</a> <a class="custom-tag" href="/tags/markdown">markdown</a></p>
 
 <p>내부 링크: <a class="custom-page-link" href="/pages/관련페이지">관련페이지</a></p>
 
