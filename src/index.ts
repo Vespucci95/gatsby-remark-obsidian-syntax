@@ -1,13 +1,13 @@
 import { visit } from 'unist-util-visit';
 import convertToObsidianSyntax from './convertToObsidianSyntax';
-import { CALLOUT_REGEX } from './constants';
+import { CALLOUT_REGEX, DEFAULT_PLUGIN_OPTIONS } from './constants';
 import _ from 'lodash'
 import { wrapWithTag } from './utils/wrap-with-tag';
 import { ExtendedBlockquote, ObsidianSyntaxPluginOptions, RemarkPluginArgs } from './type';
 
 export default function remarkObsidianSyntax(
   { markdownAST, reporter }: RemarkPluginArgs,
-  pluginOptions: ObsidianSyntaxPluginOptions
+  pluginOptions: ObsidianSyntaxPluginOptions = DEFAULT_PLUGIN_OPTIONS
 ) {
   visit(markdownAST, 'paragraph', node => {
     node.children = node.children.map(phrasingContent => convertToObsidianSyntax(phrasingContent, pluginOptions))

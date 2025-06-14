@@ -4,13 +4,13 @@ import { Blockquote, Root } from 'mdast';
 export type ObsidianMarkDownSyntax = 'highlight' | 'internalLink' | 'embedImage' | 'tag'
 
 export interface ObsidianSyntaxPluginOptions {
-  toHashTagUrl: (hashTag: string) => string;
-  toPageUrl: (page: string) => string;
-  toImageUrl: (filename: string) => string;
-  className?: Partial<typeof DEFAULT_OBSIDIAN_CLASSNAME>
+  linkTag: (tag: string) => string;
+  linkPage: (page: string) => string;
+  linkImage: (filename: string) => string;
+  className: Partial<typeof DEFAULT_OBSIDIAN_CLASSNAME>
 }
 
-export type ConvertObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions) => string;
+export type ConverterFn = (text: string, options?: Partial<ObsidianSyntaxPluginOptions>) => string;
 
 export interface RemarkPluginArgs {
   markdownAST: Root;

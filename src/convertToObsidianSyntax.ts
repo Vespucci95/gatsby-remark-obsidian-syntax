@@ -1,7 +1,7 @@
 import { PhrasingContent } from 'mdast';
 import { OBSIDIAN_MARKDOWN_REGEX } from './constants';
 import { ObsidianSyntaxPluginOptions } from './type';
-import { convertEmbedImage, convertHighlightText, convertInternalLink, convertTag } from './converters';
+import { convertEmbedImage, convertHighlight, convertInternalLink, convertTag } from './converters';
 
 export const hasObsidianSyntax = (text: string): boolean => {
   return Object.values(OBSIDIAN_MARKDOWN_REGEX)
@@ -11,7 +11,7 @@ export const hasObsidianSyntax = (text: string): boolean => {
 
 export const extendObsidianSyntax = (text: string, options: ObsidianSyntaxPluginOptions): string => [
   convertTag,
-  convertHighlightText,
+  convertHighlight,
   convertInternalLink,
   convertEmbedImage
 ].reduce((a, f) => f(a, options), text);
