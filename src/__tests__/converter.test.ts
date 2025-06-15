@@ -204,4 +204,39 @@ describe('converter', () => {
       expect(result).toContain(`href="${customLinkPage('page')}"`);
     });
   })
+
+  context('internal-link | custom text', () => {
+    it('태그가 올바르게 변환하는지 확인합니다.', () => {
+      const input = `obsidian의 [[page|text]] 기능은 편리합니다.`;
+      const expected = `obsidian의 <a class="${DEFAULT_OBSIDIAN_CLASSNAME.internalLink}" href="/pages/page">text</a> 기능은 편리합니다.`
+
+      const result = convertInternalLink(input)
+
+      expect(result).toBe(expected)
+    });
+
+    it('여러 태그가 있을 때 올바르게 변환하는지 확인합니다.', () => {
+      const input = `[[page1|text1]] [[page2|abc|abc]]`;
+      const expected = `<a class="${DEFAULT_OBSIDIAN_CLASSNAME.internalLink}" href="/pages/page1">text1</a> <a class="${DEFAULT_OBSIDIAN_CLASSNAME.internalLink}" href="/pages/page2">abcabc</a>`;
+
+      const result = convertInternalLink(input)
+
+      expect(result).toBe(expected)
+    });
+
+    it('href 경로가 올바르게 포함되는지 확인합니다.', () => {
+      const result = convertInternalLink('[[page|text]]');
+
+      expect(result).toContain(`href="${DEFAULT_PLUGIN_OPTIONS.linkPage('page')}"`);
+    });
+
+    it('href 경로가 올바르게 포함되는지 확인합니다. (custom)', () => {
+      const customLinkPage = (page:string) => `/${page}`;
+      const result = convertInternalLink('[[page|text]]', {
+        linkPage: customLinkPage
+      });
+
+      expect(result).toContain(`href="${customLinkPage('page')}"`);
+    });
+  })
 });
