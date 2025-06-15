@@ -3,7 +3,8 @@ import { DEFAULT_PLUGIN_OPTIONS, OBSIDIAN_MARKDOWN_REGEX } from '../constants';
 import { wrapWithTag } from '../utils/wrap-with-tag';
 
 const parseLinkText = (text: string): [string, string] => {
-  const [target, ...rest] = text.split('\|');
+  const [value, ...rest] = text.split('\|');
+  const target = value.trim();
   if (rest.length) {
     return [target, rest.join('')]
   }
