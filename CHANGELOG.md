@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.1.1...v0.2.0) (2025-06-15)
+
+
+### Features
+
+* 내부 링크 추가 택스트 구현 ([a48dcd7](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/a48dcd743f848846e0a2d5b2b723d98e26c725cd))
+
+
+### Bug Fixes
+
+* parseLinkText 링크 공백 제거 ([08ebbce](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/commit/08ebbce0a4a67abee314bc44dc645e5716def3a9))
+
 ### [0.1.1](https://github.com/Vespucci95/gatsby-remark-obsidian-syntax/compare/v0.1.0...v0.1.1) (2025-06-08)
 
 
