@@ -14,9 +14,10 @@ yarn add gatsby-remark-obsidian-syntax
 
 이 플러그인은 다음과 같은 Obsidian 문법을 지원합니다:
 
-- **하이라이트**: `==하이라이트==` → `<span class="obsidian-highlight">하이라이트</span>`
-- **태그**: `#태그` → `<a class="obsidian-tag" href="/tags/태그">#태그</a>`
-- **내부 링크**: `[[페이지]]` → `<a class="obsidian-internal-link" href="/pages/페이지">페이지</a>`
+- **highlight**: `==highlight==` → `<span class="obsidian-highlight">highlight</span>`
+- **tag**: `#tag` → `<a class="obsidian-tag" href="/tags/tag">#tag</a>`
+- **internalLink**: `[[internal-link]]` → `<a class="obsidian-internal-link" href="/pages/internal-link">internal-link</a>`
+- **internalLink|customText**: `[[internal-link|custom-text]]` → `<a class="obsidian-internal-link" href="/pages/internal-link">custom-text</a>`
 - **이미지**: `![[이미지.png]]` → `<img class="obsidian-image" src="/assets/이미지.png" alt="이미지.png" />`
 
 ## 사용법
